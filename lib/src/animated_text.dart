@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:progress_indicators/src/collection_animators.dart';
 
 /// Adds fading effect on each character in the [text] provided to it.
@@ -97,19 +96,23 @@ class JumpingText extends StatelessWidget {
   final String text;
   final Offset begin = Offset(0.0, 0.0);
   final Offset end;
+  final TextStyle style;
 
   /// Creates a jumping text widget.
   ///
   /// Each character in [text] is animated to look like a jumping effect.
   /// The [end] is the target [Offset] for each character.
-  JumpingText(this.text, {this.end = const Offset(0.0, -0.5)});
+  JumpingText(this.text, {this.end = const Offset(0.0, -0.5), this.style});
 
   @override
   Widget build(BuildContext context) {
     return CollectionSlideTransition(
       children: text.runes
           .map(
-            (rune) => Text(String.fromCharCode(rune)),
+            (rune) => Text(
+                  String.fromCharCode(rune),
+                  style: style ?? TextStyle(color: Colors.black),
+                ),
           )
           .toList(),
     );
