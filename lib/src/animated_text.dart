@@ -132,11 +132,12 @@ class ScalingText extends StatelessWidget {
   final String text;
   final double begin = 1.0;
   final double end;
+  final TextStyle style;
 
   /// Creates a jumping text widget.
   ///
   /// Each character in [text] is scaled to [end].
-  ScalingText(this.text, {this.end = 2.0});
+  ScalingText(this.text, {this.end = 2.0, this.style});
 
   @override
   Widget build(BuildContext context) {
@@ -144,7 +145,8 @@ class ScalingText extends StatelessWidget {
       end: end,
       children: text.runes
           .map(
-            (rune) => Text(String.fromCharCode(rune)),
+            (rune) => Text(String.fromCharCode(rune),
+                style: style ?? TextStyle(color: Colors.black)),
           )
           .toList(),
     );
