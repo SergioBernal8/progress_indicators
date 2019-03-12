@@ -111,6 +111,7 @@ class JumpingText extends StatelessWidget {
           .map(
             (rune) => Text(
                   String.fromCharCode(rune),
+                  textAlign: TextAlign.center,
                   style: style ?? TextStyle(color: Colors.black),
                 ),
           )
@@ -146,6 +147,7 @@ class ScalingText extends StatelessWidget {
       children: text.runes
           .map(
             (rune) => Text(String.fromCharCode(rune),
+                textAlign: TextAlign.center,
                 style: style ?? TextStyle(color: Colors.black)),
           )
           .toList(),
